@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { BsChevronLeft, BsChevronRight, BsDashLg } from "react-icons/bs";
-import {MdOutlineRadioButtonChecked, MdOutlineRadioButtonUnchecked} from "react-icons/md";
+import Navigation from "./Navigation";
 import Card from "../Card";
 import { carousel as carouselData } from "@/data/carousel";
-import Navigation from "./Navigation";
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
 const Carousel = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [cardsPerPage, setCardsPerPage] = useState(3);
   const {nextPrev, cards : carouselCards, navigation} = carouselData || {};
-  const {} = navigation || {};
+  const [mobile, setMobile] = useState(false);
 
   // effect for detecting screen sizes
   useEffect(() => {
@@ -17,8 +16,10 @@ const Carousel = () => {
       setCurrentPage(0);
       // checking window width is mobile screen or not
       if (window.innerWidth < 640) {
+        setMobile(true);
         setCardsPerPage(1);
       } else {
+        setMobile(false);
         setCardsPerPage(3);
       }
     }
@@ -52,30 +53,41 @@ const Carousel = () => {
     setCurrentPage(i);
   };
 
+    // decide what to render
+  let content = null;
+
+  if(!mobile) content = carouselCards.map((card) => (
+              <Card key={card.id} card={card} />
+            ));
+  
+  if(mobile) content = carouselCards.slice(startIndex, endIndex).map((card) => (
+              <Card key={card.id} card={card} />
+            ));
+      
+  
   return (
     <>
       <div className="relative">
-        <div className="overflow-hidden w-full px-12">
-          <div
-            className="flex columns-1 md:columns-3 gap-4 transition-all duration-300 ease-in-out"
-            // style={{
-            //   transform: `translateX(-${startIndex * (100 / cards.length)}%)`,
-            // }}
+        <div className="overflow-hidden w-full px-4 md:px-12">
+            <div
+            className={`flex columns-1 md:columns-3 gap-4 transition-all duration-500 ease-in-out`}
+            style={{
+              transform: `${!mobile ? `translateX(-${startIndex * (100 / carouselCards.length)}%)` : "none"}`,
+              width : `${!mobile ? `${(carouselCards.length * 33.33)}%` : "100%"}`,
+            }}
           >
-            {carouselCards.slice(startIndex, endIndex).map((card) => (
-              <Card key={card.id} card={card} />
-            ))}
+            {content}
           </div>
         </div>
         <button
           onClick={previousPage}
-          className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10 p-2 rounded-full bg-gray-800 text-white hover:bg-green-500 transition-all duration-150"
+          className="hidden md:block absolute top-1/2 left-0 transform -translate-y-1/2 z-10 p-2 rounded-full bg-gray-800 text-white hover:bg-green-500 transition-all duration-150"
         >
           <BsChevronLeft className="w-5 h-5" />
         </button>
         <button
           onClick={nextPage}
-          className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 p-2 rounded-full bg-gray-800 text-white  hover:bg-green-500 transition-all duration-150"
+          className="hidden md:block absolute top-1/2 right-0 transform -translate-y-1/2 z-10 p-2 rounded-full bg-gray-800 text-white  hover:bg-green-500 transition-all duration-150"
         >
           <BsChevronRight className="w-5 h-5" />
         </button>

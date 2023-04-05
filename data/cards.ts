@@ -1,6 +1,6 @@
 export type CardProps = {
-        id: number;
-      image: string;
+    id: number;
+    image: string;
     title: string;
     description: string;
     tags: string[];
@@ -38,6 +38,13 @@ export const cards : CardProps[] = [
   {
     id : 5,
     image : "https://media.cntraveler.com/photos/572b7a06ef80b66d167187e1/master/w_2048,h_1536,c_limit/sunsets-StBarths-by-yacht-cr-Paul-Rubio.jpg",
+    title : "The Coldest Sunset",
+    description : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+    tags : ['photography', 'travel', 'winter']
+  },
+    {
+    id : 6,
+    image : "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/e0/ce/85/sunset-beach.jpg?w=1200&h=-1&s=1",
     title : "The Coldest Sunset",
     description : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
     tags : ['photography', 'travel', 'winter']
