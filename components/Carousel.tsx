@@ -7,9 +7,11 @@ const Carousel = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [cardsPerPage, setCardsPerPage] = useState(3);
 
+  // effect for detecting screen sizes
   useEffect(() => {
     function handleResize() {
       setCurrentPage(0);
+      // checking window width is mobile screen or not
       if (window.innerWidth < 640) {
         setCardsPerPage(1);
       } else {
@@ -63,13 +65,13 @@ const Carousel = () => {
         </div>
         <button
           onClick={previousPage}
-          className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10 p-2 rounded-full bg-gray-800 text-white"
+          className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10 p-2 rounded-full bg-gray-800 text-white hover:bg-green-500 transition-all duration-150"
         >
           <BsChevronLeft className="w-5 h-5" />
         </button>
         <button
           onClick={nextPage}
-          className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 p-2 rounded-full bg-gray-800 text-white"
+          className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 p-2 rounded-full bg-gray-800 text-white  hover:bg-green-500 transition-all duration-150"
         >
           <BsChevronRight className="w-5 h-5" />
         </button>
