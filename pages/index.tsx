@@ -1,11 +1,11 @@
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] })
+import Card from '@/components/Card';
+import Carousel from '@/components/Carousel';
+import Head from 'next/head';
 
 export default function Home() {
   return (
     <>
-
+    <Carousel/>
     </>
   )
 }
