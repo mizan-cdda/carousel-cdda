@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { BsChevronLeft, BsChevronRight, BsDashLg } from "react-icons/bs";
-import Card from "./Card";
-import { cards } from "../data/cards";
+import {MdOutlineRadioButtonChecked, MdOutlineRadioButtonUnchecked} from "react-icons/md";
+import Card from "../Card";
+import { carousel as carouselData } from "@/data/carousel";
+import Navigation from "./Navigation";
 
 const Carousel = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [cardsPerPage, setCardsPerPage] = useState(3);
+  const {nextPrev, cards : carouselCards, navigation} = carouselData || {};
+  const {} = navigation || {};
 
   // effect for detecting screen sizes
   useEffect(() => {
@@ -30,19 +34,19 @@ const Carousel = () => {
 
   const previousPage = () => {
     const page =
-      (currentPage - 1 + Math.ceil(cards.length / cardsPerPage)) %
-      Math.ceil(cards.length / cardsPerPage);
+      (currentPage - 1 + Math.ceil(carouselCards.length / cardsPerPage)) %
+      Math.ceil(carouselCards.length / cardsPerPage);
     setCurrentPage(page);
   };
 
   const nextPage = () => {
-    const page = (currentPage + 1) % Math.ceil(cards.length / cardsPerPage);
+    const page = (currentPage + 1) % Math.ceil(carouselCards.length / cardsPerPage);
     setCurrentPage(page);
   };
 
   const startIndex = currentPage * cardsPerPage;
-  const endIndex = Math.min(startIndex + cardsPerPage, cards.length);
-  const totalPage = Math.ceil(cards.length / cardsPerPage);
+  const endIndex = Math.min(startIndex + cardsPerPage, carouselCards.length);
+  const totalPage = Math.ceil(carouselCards.length / cardsPerPage);
 
   const handleNavigate = (i: number) => {
     setCurrentPage(i);
@@ -58,7 +62,7 @@ const Carousel = () => {
             //   transform: `translateX(-${startIndex * (100 / cards.length)}%)`,
             // }}
           >
-            {cards.slice(startIndex, endIndex).map((card) => (
+            {carouselCards.slice(startIndex, endIndex).map((card) => (
               <Card key={card.id} card={card} />
             ))}
           </div>
@@ -76,18 +80,11 @@ const Carousel = () => {
           <BsChevronRight className="w-5 h-5" />
         </button>
       </div>
+
       {/* navigation buttons */}
-      <div className="flex justify-center mt-8">
-        {[...Array(totalPage)].map((n, i) => (
-          <BsDashLg
-            key={i}
-            size={24}
-            className={`${i === currentPage &&
-              "text-green-600"} transition-all duration-150 cursor-pointer`}
-            onClick={() => handleNavigate(i)}
-          />
-        ))}
-      </div>
+      {
+        navigation.visible && <Navigation totalPage={totalPage} navigation={navigation} currentPage={currentPage} handleNavigate={handleNavigate}/>
+      }
     </>
   );
 };

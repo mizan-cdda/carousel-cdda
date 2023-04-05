@@ -1,21 +1,15 @@
+import { CardProps } from '@/data/cards';
 import React from 'react';
 
 export type CardTypes = {
-    card : {
-      id: number;
-      image: string;
-    title: string;
-    description: string;
-    tags: string[];
-    }
+    card : CardProps
 };
 
 const Card = ({card} : CardTypes) => {
   const {id, image, title, description, tags} = card || {};
   return (
-      // <div className="w-1/3 rounded overflow-hidden shadow-lg">
       <div className="md:w-1/3 rounded overflow-hidden shadow-lg border">
-        <img className="w-full max-h-60" src={image}/>
+        <img className="w-full h-60" src={image}/>
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{title}</div>
           <p className="text-gray-700 text-base">
