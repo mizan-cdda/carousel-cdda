@@ -85,13 +85,13 @@ const Carousel = () => {
         {
           nextPrev && <><button
           onClick={previousPage}
-          className={`hidden md:block absolute top-1/2 ${!padding ? "left-8" : "left-0"} transform -translate-y-1/2 z-10 p-2 rounded-full bg-gray-800 text-white hover:bg-green-500 transition-all duration-150`}
+          className={`absolute top-1/2 ${!padding ? "left-8" : "left-0"} transform ${mobile ? "-translate-y-full" : "-translate-y-1/2"} z-10 p-2 rounded-full bg-gray-800 text-white hover:bg-green-500 transition-all duration-150`}
         >
           <BsChevronLeft className="w-8 h-8" />
         </button>
         <button
           onClick={nextPage}
-          className={`hidden md:block absolute top-1/2  ${!padding ? "right-8" : "right-0"} transform -translate-y-1/2 z-10 p-2 rounded-full bg-gray-800 text-white  hover:bg-green-500 transition-all duration-150`}
+          className={`absolute top-1/2  ${!padding ? "right-8" : "right-0"} transform ${mobile ? "-translate-y-full" : "-translate-y-1/2"} z-10 p-2 rounded-full bg-gray-800 text-white  hover:bg-green-500 transition-all duration-150`}
         >
           <BsChevronRight className="w-8 h-8" />
         </button></>

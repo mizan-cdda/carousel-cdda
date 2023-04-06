@@ -24,10 +24,10 @@ export type CarouselProps = {
 
 export const carousel : CarouselProps = {
     nextPrev : true,
-    padding : true,
+    padding : false,
     cards,
     navigation : {
         visible : true,
-        type : TypesEnum.Dotted
+        type : TypesEnum.Circle
     }
 };
