@@ -2,6 +2,7 @@ import {CardProps, cards} from "./cards";
 
 export enum TypesEnum {
     Line = "line",
+    Dotted= "dotted",
     Circle = "circle",
     Hidden = "hidden"
 };
@@ -23,10 +24,10 @@ export type CarouselProps = {
 
 export const carousel : CarouselProps = {
     nextPrev : true,
-    padding : false,
+    padding : true,
     cards,
     navigation : {
         visible : true,
-        type : TypesEnum.Circle
+        type : TypesEnum.Dotted
     }
 };

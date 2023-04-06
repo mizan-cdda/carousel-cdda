@@ -2,6 +2,7 @@ import { NavProps, TypesEnum } from '@/data/carousel';
 import React from 'react'
 import { BsDashLg } from 'react-icons/bs'
 import { MdOutlineRadioButtonChecked, MdOutlineRadioButtonUnchecked } from 'react-icons/md';
+import {RxDot, RxDotFilled} from "react-icons/rx";
 
 export type CarouselNavigationProps = {
     totalPage : number,
@@ -34,6 +35,22 @@ const Navigation = (props : CarouselNavigationProps) => {
                       onClick={() => handleNavigate(i)}
                     />:
                     <MdOutlineRadioButtonUnchecked
+                      key={i}
+                      size={18}
+                      className={`${i === currentPage &&
+                        "text-green-600"} transition-all duration-150 cursor-pointer`}
+                      onClick={() => handleNavigate(i)}
+                    />
+            
+            case TypesEnum.Dotted :
+                  return i === currentPage ? <RxDotFilled
+                      key={i}
+                      size={18}
+                      className={`${i === currentPage &&
+                        "text-green-600"} transition-all duration-150 cursor-pointer`}
+                      onClick={() => handleNavigate(i)}
+                    />:
+                    <RxDot
                       key={i}
                       size={18}
                       className={`${i === currentPage &&
