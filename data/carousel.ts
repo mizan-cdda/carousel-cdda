@@ -6,7 +6,7 @@ export enum TypesEnum {
     Hidden = "hidden"
 };
 
-export type Types = TypesEnum.Circle | TypesEnum.Line | TypesEnum.Hidden;
+export type Types = TypesEnum;
 
 export type NavProps = {
     visible : boolean,
@@ -16,12 +16,14 @@ export type NavProps = {
 
 export type CarouselProps = {
     nextPrev : boolean,
+    padding : boolean,
     cards : CardProps[],
     navigation : NavProps
 };
 
 export const carousel : CarouselProps = {
     nextPrev : true,
+    padding : false,
     cards,
     navigation : {
         visible : true,

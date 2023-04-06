@@ -8,7 +8,7 @@ export type CarouselNavigationProps = {
     navigation : NavProps,
     currentPage :number,
     handleNavigate : (i : number) => void
-}
+};
 
 const Navigation = (props : CarouselNavigationProps) => {
     const {totalPage, navigation, currentPage, handleNavigate} = props;

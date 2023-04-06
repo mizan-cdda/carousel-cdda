@@ -7,7 +7,7 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 const Carousel = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [cardsPerPage, setCardsPerPage] = useState(3);
-  const {nextPrev, cards : carouselCards, navigation} = carouselData || {};
+  const {nextPrev, padding, cards : carouselCards, navigation} = carouselData || {};
   const [mobile, setMobile] = useState(false);
 
   // effect for detecting screen sizes
@@ -42,11 +42,14 @@ const Carousel = () => {
 
   const nextPage = () => {
     const page = (currentPage + 1) % Math.ceil(carouselCards.length / cardsPerPage);
+    console.log(currentPage + 1, carouselCards.length, cardsPerPage, page);
+    
     setCurrentPage(page);
   };
 
   const startIndex = currentPage * cardsPerPage;
   const endIndex = Math.min(startIndex + cardsPerPage, carouselCards.length);
+  
   const totalPage = Math.ceil(carouselCards.length / cardsPerPage);
 
   const handleNavigate = (i: number) => {
@@ -68,7 +71,7 @@ const Carousel = () => {
   return (
     <>
       <div className="relative">
-        <div className="overflow-hidden w-full px-4 md:px-12">
+        <div className={`overflow-hidden w-full ${padding && "px-4 md:px-12"}`}>
             <div
             className={`flex columns-1 md:columns-3 gap-4 transition-all duration-500 ease-in-out`}
             style={{
@@ -79,18 +82,20 @@ const Carousel = () => {
             {content}
           </div>
         </div>
-        <button
+        {
+          nextPrev && <><button
           onClick={previousPage}
-          className="hidden md:block absolute top-1/2 left-0 transform -translate-y-1/2 z-10 p-2 rounded-full bg-gray-800 text-white hover:bg-green-500 transition-all duration-150"
+          className={`hidden md:block absolute top-1/2 ${!padding ? "left-8" : "left-0"} transform -translate-y-1/2 z-10 p-2 rounded-full bg-gray-800 text-white hover:bg-green-500 transition-all duration-150`}
         >
-          <BsChevronLeft className="w-5 h-5" />
+          <BsChevronLeft className="w-8 h-8" />
         </button>
         <button
           onClick={nextPage}
-          className="hidden md:block absolute top-1/2 right-0 transform -translate-y-1/2 z-10 p-2 rounded-full bg-gray-800 text-white  hover:bg-green-500 transition-all duration-150"
+          className={`hidden md:block absolute top-1/2  ${!padding ? "right-8" : "right-0"} transform -translate-y-1/2 z-10 p-2 rounded-full bg-gray-800 text-white  hover:bg-green-500 transition-all duration-150`}
         >
-          <BsChevronRight className="w-5 h-5" />
-        </button>
+          <BsChevronRight className="w-8 h-8" />
+        </button></>
+        }
       </div>
 
       {/* navigation buttons */}
