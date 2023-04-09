@@ -85,7 +85,7 @@ const Carousel = () => {
       <div className="relative overflow-hidden">
         <div className={`overflow-hidden w-full ${padding && "px-4 md:px-12"}`}>
             <div
-            className={`flex columns-1 md:columns-3 gap-4 transition-all duration-500 ease-in-out box-border`}
+            className={`flex columns-1 md:columns-3 transition-all duration-500 ease-in-out box-border`}
             style={{
               transform: `${!mobile ? `translateX(-${startIndex * (100 / carouselCards.length)}%)` : "none"}`,
               width : `${!mobile ? `${(carouselCards.length * 33.33)}%` : "100%"}`,
