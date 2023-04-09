@@ -9,6 +9,8 @@ const Carousel = () => {
   const [cardsPerPage, setCardsPerPage] = useState(3);
   const {nextPrev, padding, cards : carouselCards, navigation} = carouselData || {};
   const [mobile, setMobile] = useState(false);
+  const [tablet, setTablet] = useState(false);
+  const [desktop, setDesktop] = useState(false);
 
   // effect for detecting screen sizes
   useEffect(() => {
@@ -17,9 +19,19 @@ const Carousel = () => {
       // checking window width is mobile screen or not
       if (window.innerWidth < 640) {
         setMobile(true);
+        setTablet(false);
+        setDesktop(false);
         setCardsPerPage(1);
-      } else {
+      }else if(window.innerWidth < 768){
+         setMobile(false);
+        setTablet(true);
+        setDesktop(false);
+        setCardsPerPage(2);
+      } 
+      else {
         setMobile(false);
+        setTablet(false);
+        setDesktop(true);
         setCardsPerPage(3);
       }
     }
