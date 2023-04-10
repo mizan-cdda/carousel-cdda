@@ -45,6 +45,7 @@ const Carousel = () => {
     };
   }, []);
 
+  // prev page handler
   const previousPage = () => {
     const page =
       (currentPage - 1 + Math.ceil(carouselCards.length / cardsPerPage)) %
@@ -52,9 +53,9 @@ const Carousel = () => {
     setCurrentPage(page);
   };
 
+  // next page handler 
   const nextPage = () => {
     const page = (currentPage + 1) % Math.ceil(carouselCards.length / cardsPerPage);
-    console.log(currentPage + 1, carouselCards.length, cardsPerPage, page);
     
     setCurrentPage(page);
   };
