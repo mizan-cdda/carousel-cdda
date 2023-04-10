@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Navigation from "./Navigation";
-import Card from "../Card";
 import { carousel as carouselData } from "@/data/carousel";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import Cards from "../Cards/Cards";
 
 const Carousel = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -68,32 +68,13 @@ const Carousel = () => {
   const handleNavigate = (i: number) => {
     setCurrentPage(i);
   };
-
-    // decide what to render
-  let content = null;
-
-  if(!mobile) content = carouselCards.map((card) => (
-              <Card key={card.id} card={card} />
-            ));
-  
-  if(mobile) content = carouselCards.slice(startIndex, endIndex).map((card) => (
-              <Card key={card.id} card={card} />
-            ));
       
   
   return (
     <>
       <div className="relative overflow-hidden">
         <div className={`overflow-hidden w-full ${padding && "px-4 md:px-12"}`}>
-            <div
-            className={`flex columns-1 md:columns-3 transition-all duration-500 ease-in-out box-border`}
-            style={{
-              transform: `${!mobile ? `translateX(-${startIndex * (100 / carouselCards.length)}%)` : "none"}`,
-              width : `${!mobile ? `${(carouselCards.length * 33.33)}%` : "100%"}`,
-            }}
-          >
-            {content}
-          </div>
+          <Cards mobile={mobile} carouselCards={carouselCards} startIndex={startIndex} endIndex={endIndex}/>
         </div>
         {
           nextPrev && <><button

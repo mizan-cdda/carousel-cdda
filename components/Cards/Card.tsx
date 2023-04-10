@@ -1,6 +1,6 @@
 import { CardProps } from '@/data/cards';
 import React, { useEffect, useState } from 'react';
-import {style} from "../data/cardStyle";
+import {style} from "../../data/cardStyle";
 
 export type CardTypes = {
     card : CardProps
@@ -29,8 +29,6 @@ const Card = ({card} : CardTypes) => {
   const {className: descriptionClassName, style : descriptionStyle, styleMob : descriptionStyleMob, styleTab : descriptionStyleTab} = bodyDescriptionStyle || {};
   const {className : tagsContainerClassName, style : tagsContainerStyle, tag, styleMob : tagsStyleMob, styleTab : tagsStyleTab } = tagsStyle || {};
   const {className : tagClassName, style : tagStyle, styleMob : tagStyleMob, styleTab : tagStyleTab} = tag || {};
-
-  console.log(tagClassName);
   
 
   // style handlers
