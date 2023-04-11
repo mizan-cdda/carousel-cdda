@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './Card';
 import { CardProps } from '@/data/cards';
+import { cardsStyle } from '@/Types/cardsStylesTypes';
 
 export type CardsPropsTypes = {
     mobile : boolean,
@@ -11,13 +12,7 @@ export type CardsPropsTypes = {
     carouselCards : CardProps[],
 };
 
-const cardsStyle = {
-  className : "flex transition-all duration-500 md:duration-1000 ease-in-out gap-10 px-6 my-10",
-  style : {},
-  styleMob : {}, 
-  styleTab : {}
-};
-const {className} = cardsStyle || {};
+const {className, desktopCard, mobileCard, tabletCard} = cardsStyle || {};
 
 
 
@@ -29,7 +24,7 @@ const Cards = ({mobile, carouselCards, startIndex, endIndex, desktop, tablet} : 
             style={{
               transform: `translateX(-${startIndex * (100 / carouselCards.length)}%)`,
               // width : `${(mobile && `${(carouselCards.length * 100)}%`) || (tablet && `${(carouselCards.length * 50)}%`) || (desktop && `${(carouselCards.length * 33.33)}%`)}`,
-              width : `${(mobile && `${(carouselCards.length * 100)}%`) || (tablet && `${(carouselCards.length * 50)}%`) || (desktop && `${(carouselCards.length * 25)}%`)}`,
+              width : `${(mobile && `${(carouselCards.length * mobileCard)}%`) || (tablet && `${(carouselCards.length * tabletCard)}%`) || (desktop && `${(carouselCards.length * desktopCard)}%`)}`,
             }}
           >
             {carouselCards.map((card : CardProps) => (

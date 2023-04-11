@@ -34,7 +34,7 @@ const Carousel = () => {
         setTablet(true);
         setDesktop(false);
         setCardsPerPage(2);
-      } 
+      }
       else {
         setMobile(false);
         setTablet(false);
