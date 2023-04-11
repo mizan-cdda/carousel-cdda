@@ -74,7 +74,7 @@ const Carousel = () => {
     <>
       <div className="relative overflow-hidden">
         <div className={`overflow-hidden w-full ${padding && "px-4 md:px-12"}`}>
-          <Cards mobile={mobile} carouselCards={carouselCards} startIndex={startIndex} endIndex={endIndex}/>
+          <Cards mobile={mobile} tablet={tablet} desktop={desktop} carouselCards={carouselCards} startIndex={startIndex} endIndex={endIndex}/>
         </div>
         {
           nextPrev && <><button
