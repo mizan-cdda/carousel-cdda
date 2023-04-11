@@ -1,10 +1,10 @@
 export const style = {
   card : {
     id: "card",
-    className : "card w-full md:w-1/3 shadow-lg",
-    style : {marginTop : "20px", marginBottom : "20px", marginLeft : "40px", marginRight : "40px", overflow : "hidden", border: "1px solid gray", borderRadius: "5px"},
-    styleMob : {marginTop : "20px", marginBottom : "20px", marginLeft : "10px", marginRight : "10px", overflow : "hidden", border: "1px solid gray", borderRadius: "5px"},
-    styleTab : {marginTop : "20px", marginBottom : "20px", marginLeft : "10px", marginRight : "10px", overflow : "hidden", border: "1px solid gray", borderRadius: "5px"},
+    className : "card md:w-1/2 lg:w-1/3 shadow-lg",
+    style : {overflow : "hidden", border: "1px solid gray", borderRadius: "5px"},
+    styleMob : {overflow : "hidden", border: "1px solid gray", borderRadius: "5px"},
+    styleTab : {overflow : "hidden", border: "1px solid gray", borderRadius: "5px"},
   
     body : {
       id: "card-body",
