@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, TouchEventHandler } from "react";
 import Navigation from "./Navigation";
 import {useScreenSizes} from "../../hooks/useScreenSizes";
+import {SWIPE_THRESHOLD} from "../../utils/carouselConstants";
 import { carousel as carouselData } from "@/data/carousel";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import Cards from "../Cards/Cards";
@@ -14,6 +15,9 @@ const Carousel = () => {
   const [mobile, setMobile] = useState(false);
   const [tablet, setTablet] = useState(false);
   const [desktop, setDesktop] = useState(false);
+
+    const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   // effect for detecting screen sizes
   useEffect(() => {
@@ -35,7 +39,7 @@ const Carousel = () => {
         setMobile(false);
         setTablet(false);
         setDesktop(true);
-        setCardsPerPage(3);
+        setCardsPerPage(4);
       }
     }
 
@@ -71,24 +75,42 @@ const Carousel = () => {
   const handleNavigate = (i: number) => {
     setCurrentPage(i);
   };
+
+  // touch handlers
+    const handleTouchStart : TouchEventHandler<HTMLDivElement> = (event) => {
+    touchStartX.current = event.touches[0].clientX;
+  };
+
+  const handleTouchEnd : TouchEventHandler<HTMLDivElement> = (event) => {
+    touchEndX.current = event.changedTouches[0].clientX;
+    
+    const touchDistance = touchEndX.current - touchStartX.current;
+    
+    if (Math.abs(touchDistance) > SWIPE_THRESHOLD) {
+      if (touchDistance > 0) {
+        previousPage();
+      } else {
+        nextPage();
+      }
+    }}
   
   
   return (
     <>
       <div className="relative overflow-hidden">
-        <div className={`overflow-hidden w-full ${padding && "px-4 md:px-12"}`}>
+        <div className={`overflow-hidden w-full ${padding && "px-4 md:px-12"}`}  onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
           <Cards mobile={mobile} tablet={tablet} desktop={desktop} carouselCards={carouselCards} startIndex={startIndex} endIndex={endIndex}/>
         </div>
         {
           nextPrev && <><button
           onClick={previousPage}
-          className={`absolute top-1/2 ${!padding ? "left-8" : "left-0"} transform ${mobile ? "-translate-y-full" : "-translate-y-1/2"} z-10 p-2 rounded-full bg-gray-800 text-white hover:bg-green-500 transition-all duration-150`}
+          className={`hidden lg:block absolute top-1/2 ${!padding ? "left-8" : "left-0"} transform ${mobile ? "-translate-y-full" : "-translate-y-1/2"} z-10 p-2 rounded-full bg-gray-800 text-white hover:bg-green-500 transition-all duration-150`}
         >
           <BsChevronLeft className="w-8 h-8" />
         </button>
         <button
           onClick={nextPage}
-          className={`absolute top-1/2  ${!padding ? "right-8" : "right-0"} transform ${mobile ? "-translate-y-full" : "-translate-y-1/2"} z-10 p-2 rounded-full bg-gray-800 text-white  hover:bg-green-500 transition-all duration-150`}
+          className={`hidden lg:block absolute top-1/2  ${!padding ? "right-8" : "right-0"} transform ${mobile ? "-translate-y-full" : "-translate-y-1/2"} z-10 p-2 rounded-full bg-gray-800 text-white  hover:bg-green-500 transition-all duration-150`}
         >
           <BsChevronRight className="w-8 h-8" />
         </button></>

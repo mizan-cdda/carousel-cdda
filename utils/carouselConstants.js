@@ -1,0 +1,1 @@
+export const SWIPE_THRESHOLD = 50; // minimum swipe distance to trigger a swipe

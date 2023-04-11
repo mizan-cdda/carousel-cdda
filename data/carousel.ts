@@ -28,6 +28,6 @@ export const carousel : CarouselProps = {
     cards,
     navigation : {
         visible : true,
-        type : TypesEnum.Line
+        type : TypesEnum.Circle
     }
 };
