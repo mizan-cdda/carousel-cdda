@@ -12,7 +12,7 @@ export type CardsPropsTypes = {
     carouselCards : CardProps[],
 };
 
-const {className, desktopCard, mobileCard, tabletCard} = cardsStyle || {};
+const {className, desktopCardSize, mobileCardSize, tabletCardSize} = cardsStyle || {};
 
 
 
@@ -23,8 +23,7 @@ const Cards = ({mobile, carouselCards, startIndex, endIndex, desktop, tablet} : 
             className={className}
             style={{
               transform: `translateX(-${startIndex * (100 / carouselCards.length)}%)`,
-              // width : `${(mobile && `${(carouselCards.length * 100)}%`) || (tablet && `${(carouselCards.length * 50)}%`) || (desktop && `${(carouselCards.length * 33.33)}%`)}`,
-              width : `${(mobile && `${(carouselCards.length * mobileCard)}%`) || (tablet && `${(carouselCards.length * tabletCard)}%`) || (desktop && `${(carouselCards.length * desktopCard)}%`)}`,
+              width : `${(mobile && `${(carouselCards.length * mobileCardSize)}%`) || (tablet && `${(carouselCards.length * tabletCardSize)}%`) || (desktop && `${(carouselCards.length * desktopCardSize)}%`)}`,
             }}
           >
             {carouselCards.map((card : CardProps) => (
