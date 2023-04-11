@@ -14,7 +14,7 @@ export type CarouselNavigationProps = {
 const Navigation = (props : CarouselNavigationProps) => {
     const {totalPage, navigation, currentPage, handleNavigate} = props;
   return (
-    <div className="flex justify-center mt-8 gap-2">
+    <div className="hidden md:flex justify-center mt-8 gap-2">
         {[...Array(totalPage)].map((n, i) => {
           switch (navigation.type) {
             case TypesEnum.Line:

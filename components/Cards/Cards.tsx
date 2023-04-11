@@ -1,5 +1,5 @@
 import React from 'react';
-import Card, { CardTypes } from './Card';
+import Card from './Card';
 import { CardProps } from '@/data/cards';
 
 export type CardsPropsTypes = {

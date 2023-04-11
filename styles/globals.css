@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+  --mobile-size: 640;
+  --tablet-size : 768;
+}

@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Navigation from "./Navigation";
+import {useScreenSizes} from "../../hooks/useScreenSizes";
 import { carousel as carouselData } from "@/data/carousel";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import Cards from "../Cards/Cards";
 
 const Carousel = () => {
+  const {mobileScreen, tabletScreen} = useScreenSizes();
+  
   const [currentPage, setCurrentPage] = useState(0);
   const [cardsPerPage, setCardsPerPage] = useState(3);
   const {nextPrev, padding, cards : carouselCards, navigation} = carouselData || {};
@@ -17,12 +20,12 @@ const Carousel = () => {
     function handleResize() {
       setCurrentPage(0);
       // checking window width is mobile screen or not
-      if (window.innerWidth < 640) {
+      if (window.innerWidth < mobileScreen) {
         setMobile(true);
         setTablet(false);
         setDesktop(false);
         setCardsPerPage(1);
-      }else if(window.innerWidth < 768){
+      }else if(window.innerWidth < tabletScreen){
          setMobile(false);
         setTablet(true);
         setDesktop(false);
@@ -43,7 +46,7 @@ const Carousel = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [mobileScreen, tabletScreen]);
 
   // prev page handler
   const previousPage = () => {
@@ -68,7 +71,7 @@ const Carousel = () => {
   const handleNavigate = (i: number) => {
     setCurrentPage(i);
   };
-      
+  
   
   return (
     <>
