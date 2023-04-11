@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project with Typescript and Tailwind CSS integrated.
+This is a [Next.js](https://nextjs.org/) project integrated with Typescript and Tailwind CSS.
 
 ## Getting Started With CDDA
 
