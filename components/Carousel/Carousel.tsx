@@ -92,7 +92,7 @@ const Carousel = () => {
       } else {
         nextPage();
       }
-    }}
+    }};
   
   
   return (
