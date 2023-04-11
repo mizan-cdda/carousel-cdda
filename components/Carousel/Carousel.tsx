@@ -6,7 +6,7 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import Cards from "../Cards/Cards";
 
 const Carousel = () => {
-  const {mobileScreen, tabletScreen} = useScreenSizes();
+  const {mobileScreen, tabletScreen, desktopLargeScreen} = useScreenSizes();
   
   const [currentPage, setCurrentPage] = useState(0);
   const [cardsPerPage, setCardsPerPage] = useState(3);
@@ -20,12 +20,12 @@ const Carousel = () => {
     function handleResize() {
       setCurrentPage(0);
       // checking window width is mobile screen or not
-      if (window.innerWidth < mobileScreen) {
+      if (window.innerWidth < tabletScreen) {
         setMobile(true);
         setTablet(false);
         setDesktop(false);
         setCardsPerPage(1);
-      }else if(window.innerWidth < tabletScreen){
+      }else if(window.innerWidth >= tabletScreen && window.innerWidth < desktopLargeScreen){
          setMobile(false);
         setTablet(true);
         setDesktop(false);

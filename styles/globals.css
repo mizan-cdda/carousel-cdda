@@ -6,4 +6,5 @@
 body {
   --mobile-size: 640;
   --tablet-size : 768;
+  --desktopLg-size : 1024;
 }

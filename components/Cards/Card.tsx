@@ -1,12 +1,14 @@
 import { CardProps } from '@/data/cards';
 import React, { useEffect, useState } from 'react';
 import {style} from "../../data/cardStyle";
+import { useScreenSizes } from '@/hooks/useScreenSizes';
 
 export type CardTypes = {
     card : CardProps
 };
 
 const Card = ({card} : CardTypes) => {
+  const {mobileScreen, tabletScreen, desktopLargeScreen} = useScreenSizes();
   const {id, image, title, description, tags} = card || {};
 
   // styles states
@@ -63,13 +65,13 @@ const Card = ({card} : CardTypes) => {
     };
 
 
-  // effect for styles state depending on device screen
+  // effect for styles state depending on device screen and different screen styles
   useEffect(() => {
     function handleResize() {
       // checking window width is mobile screen or not
-      if (window.innerWidth < 640) {
+      if (window.innerWidth < tabletScreen) {
         mobileScrrenView();
-      }else if(window.innerWidth < 1048){
+      }else if(window.innerWidth >= tabletScreen && window.innerWidth < desktopLargeScreen){
         // checking window width is tab screen or not
         tabScreenView();
       } 
@@ -85,7 +87,7 @@ const Card = ({card} : CardTypes) => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [mobileScreen, tabletScreen]);
   
   return (
       <div className={cardStyle.className} style={cardStyleState}>
