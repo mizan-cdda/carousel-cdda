@@ -9,12 +9,12 @@ import Cards from "../Cards/Cards";
 const Carousel = () => {
   const {mobileScreen, tabletScreen, desktopLargeScreen} = useScreenSizes();
   
-  const [currentPage, setCurrentPage] = useState(0);
-  const [cardsPerPage, setCardsPerPage] = useState(3);
+  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [cardsPerPage, setCardsPerPage] = useState<number>(3);
   const {nextPrev, padding, cards : carouselCards, navigation} = carouselData || {};
-  const [mobile, setMobile] = useState(false);
-  const [tablet, setTablet] = useState(false);
-  const [desktop, setDesktop] = useState(false);
+  const [mobile, setMobile] = useState<boolean>(false);
+  const [tablet, setTablet] = useState<boolean>(false);
+  const [desktop, setDesktop] = useState<boolean>(false);
 
     const touchStartX = useRef(0);
   const touchEndX = useRef(0);

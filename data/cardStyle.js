@@ -31,10 +31,10 @@ export const style = {
   
       description : {
         id: "card-description",
-        className : "card-description text-gray-700 text-base",
-        style : {},
-        styleMob : {},
-        styleTab : {}
+        className : "card-description text-gray-700",
+        style : {color : "rgb(55 65 81)"},
+        styleMob : {color : "rgb(55 65 81)"},
+        styleTab : {color : "rgb(55 65 81)"}
       },
   
       tags : {
@@ -48,24 +48,24 @@ export const style = {
           id: "card-tag",
           className : "rounded-full hover:bg-green-600 hover:text-white",
           style : {display: "inline-block", cursor: "pointer", paddingLeft : ".75rem", paddingRight:".75rem", paddingTop: ".25rem", paddingBottom : ".25rem", backgroundColor : "rgb(229 231 235)", fontSize : "0.875rem", fontWeight : "400", color : "rgb(55 65 81)", transition : "all 0.5s ease-in-out"},
-          styleMob : {},
-          styleTab : {}
+          styleMob : {display: "inline-block", cursor: "pointer", paddingLeft : ".75rem", paddingRight:".75rem", paddingTop: ".25rem", paddingBottom : ".25rem", backgroundColor : "rgb(229 231 235)", fontSize : "0.875rem", fontWeight : "400", color : "rgb(55 65 81)", transition : "all 0.5s ease-in-out"},
+          styleTab : {display: "inline-block", cursor: "pointer", paddingLeft : ".75rem", paddingRight:".75rem", paddingTop: ".25rem", paddingBottom : ".25rem", backgroundColor : "rgb(229 231 235)", fontSize : "0.875rem", fontWeight : "400", color : "rgb(55 65 81)", transition : "all 0.5s ease-in-out"},
         }
       },
 
-      buyNow : {
+      footer : {
         id: "card-buy-now",
-        className : 'mx-4 flex justify-end mb-4',
-        style : {},
-        styleMob : {},
-        styleTab : {},
+        className : '',
+        style : {marginTop : ".5rem", marginBottom : ".5rem", display : "flex", justifyContent : "flex-end", marginBottom : "0.5rem", marginRight : "1.5rem"},
+        styleMob : {marginTop : ".5rem", marginBottom : ".5rem", display : "flex", justifyContent : "flex-end", marginBottom : "0.5rem", marginRight : "1.5rem"},
+        styleTab : {marginTop : ".5rem", marginBottom : ".5rem", display : "flex", justifyContent : "flex-end", marginBottom : "0.5rem", marginRight : "1.5rem"},
 
         button : {
           id: "card-button",
-          className : 'border-2 border-transparent text-white px-4 bg-green-500 capitalize hover:border-transparent hover:bg-green-600 hover:text-white transition-all duration-150',
-          style : {},
-          styleMob : {},
-          styleTab : {}
+          className : 'text-white px-4 hover:border-transparent hover:bg-green-600 hover:text-white',
+          style : {border : "2px", borderColor : "transparent", backgroundColor : "rgb(34 197 94)", textTransform : "capitalize", transition : "all 150ms ease-in-out"},
+          styleMob : {border : "2px", borderColor : "transparent", backgroundColor : "rgb(34 197 94)", textTransform : "capitalize", transition : "all 150ms ease-in-out"},
+          styleTab : {border : "2px", borderColor : "transparent", backgroundColor : "rgb(34 197 94)", textTransform : "capitalize", transition : "all 150ms ease-in-out"},
         }
       }
   }
