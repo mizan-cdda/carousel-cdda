@@ -9,11 +9,11 @@ export type CardsStyleTypes = {
 }
 
 export const cardsStyle : CardsStyleTypes = {
-  className : "flex transition-all duration-500 md:duration-1000 ease-in-out gap-10 px-6 my-10",
+  className : "",
   desktopCardSize : 100/4,
   mobileCardSize : 100/1,
   tabletCardSize : 100/2,
-  style : {},
-  styleMob : {}, 
-  styleTab : {}
+  style : {display : "flex", gap: "2.5rem", margin : "2.5rem 0px", transition : "all 0.8s ease-in-out", padding : "0px 1.5rem"},
+  styleMob : {display : "flex", gap: "2.5rem", margin : "2.5rem 0px", transition : "all 0.5s ease-in-out", padding : "0px 1.5rem"}, 
+  styleTab : {display : "flex", gap: "2.5rem", margin : "2.5rem 0px", transition : "all 0.5s ease-in-out", padding : "0px 1.5rem"},
 };

@@ -24,12 +24,12 @@ const Carousel = () => {
     function handleResize() {
       setCurrentPage(0);
       // checking window width is mobile screen or not
-      if (window.innerWidth < tabletScreen) {
+      if (window.innerWidth <= mobileScreen) {
         setMobile(true);
         setTablet(false);
         setDesktop(false);
         setCardsPerPage(1);
-      }else if(window.innerWidth >= tabletScreen && window.innerWidth < desktopLargeScreen){
+      }else if(window.innerWidth > mobileScreen && window.innerWidth < desktopLargeScreen){
          setMobile(false);
         setTablet(true);
         setDesktop(false);

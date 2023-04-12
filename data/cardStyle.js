@@ -40,13 +40,29 @@ export const style = {
       tags : {
         id: "card-tags",
         className : "",
-        style : {paddingRight : "1.5rem", paddingLeft: "1.5rem", paddingTop : "1rem", paddingBottom : "0.5rem"},
-        styleMob : {paddingRight : "1.5rem", paddingLeft: "1.5rem", paddingTop : "1rem", paddingBottom : "0.5rem"},
-        styleTab : {paddingRight : "1.5rem", paddingLeft: "1.5rem", paddingTop : "1rem", paddingBottom : "0.5rem"},
+        style : {paddingRight : "1.5rem", paddingLeft: "1.5rem", paddingTop : "1rem", paddingBottom : "0.5rem", gap: "4px", display: "flex"},
+        styleMob : {paddingRight : "1.5rem", paddingLeft: "1.5rem", paddingTop : "1rem", paddingBottom : "0.5rem", gap: "4px", display: "flex"},
+        styleTab : {paddingRight : "1.5rem", paddingLeft: "1.5rem", paddingTop : "1rem", paddingBottom : "0.5rem", gap: "4px", display: "flex"},
 
         tag : {
           id: "card-tag",
-          className : "inline-block cursor-pointer bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 hover:bg-green-600 hover:text-white transition-all duration-150",
+          className : "rounded-full hover:bg-green-600 hover:text-white",
+          style : {display: "inline-block", cursor: "pointer", paddingLeft : ".75rem", paddingRight:".75rem", paddingTop: ".25rem", paddingBottom : ".25rem", backgroundColor : "rgb(229 231 235)", fontSize : "0.875rem", fontWeight : "400", color : "rgb(55 65 81)", transition : "all 0.5s ease-in-out"},
+          styleMob : {},
+          styleTab : {}
+        }
+      },
+
+      buyNow : {
+        id: "card-buy-now",
+        className : 'mx-4 flex justify-end mb-4',
+        style : {},
+        styleMob : {},
+        styleTab : {},
+
+        button : {
+          id: "card-button",
+          className : 'border-2 border-transparent text-white px-4 bg-green-500 capitalize hover:border-transparent hover:bg-green-600 hover:text-white transition-all duration-150',
           style : {},
           styleMob : {},
           styleTab : {}

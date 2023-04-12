@@ -19,18 +19,22 @@ const Card = ({card} : CardTypes) => {
   const [descriptionStyleState, setDescriptionStyleState] = useState({});
   const [tagsStyleState, setTagsStyleState]  = useState({});
   const [tagStyleState, setTagStyleState] = useState({});
+  const [buyNowStyleState, setBuyNowStyleState] = useState({});
+  const [buyNowButtonStyleState, setBuyNowButtonStyleState] = useState({});
 
 
   // styles
   const { card : cardStyle } = style || {};
   const {body : bodyStyle, style : cardStylePc, styleMob : cardStyleMob, styleTab:cardStyleTab} = cardStyle || {};
-  const {thumbnail, title: bodyTitleStyle, description : bodyDescriptionStyle, tags : tagsStyle} = bodyStyle || {};
+  const {thumbnail, title: bodyTitleStyle, description : bodyDescriptionStyle, tags : tagsStyle, buyNow : buyNowStyle} = bodyStyle || {};
   const {style : bodySectionStyle, className : bodyClassName, styleMob : bodyStyleMob, styleTab : bodyStyleTab} = bodyStyle || {};
   const {className: thumbnailClassName, style : thumbnailStyle, styleMob : thumbnailStyleMob, styleTab : thumbnailStyleTab} = thumbnail || {};
   const {className: titleClassName, style : titleStyle, styleMob : titleStyleMob, styleTab : titleStyleTab} = bodyTitleStyle || {};
   const {className: descriptionClassName, style : descriptionStyle, styleMob : descriptionStyleMob, styleTab : descriptionStyleTab} = bodyDescriptionStyle || {};
   const {className : tagsContainerClassName, style : tagsContainerStyle, tag, styleMob : tagsStyleMob, styleTab : tagsStyleTab } = tagsStyle || {};
   const {className : tagClassName, style : tagStyle, styleMob : tagStyleMob, styleTab : tagStyleTab} = tag || {};
+  const {className: buyNowClassName, style : buyNowContainerStyle, styleMob : buyNowContainerStyleMob, styleTab : buyNowContainerStyleTab, button : buyNowButton } = buyNowStyle || {};
+  const {className : buyNowButtonClassName, style : buyNowButtonStyle, styleMob : buyNowButtonStyleMob, styleTab : buyNowButtonStyleTab} = buyNowButton || {};
   
 
   // style handlers
@@ -42,6 +46,8 @@ const Card = ({card} : CardTypes) => {
         setDescriptionStyleState(descriptionStyle);
         setTagsStyleState(tagsContainerStyle);
         setTagStyleState(tagStyle);
+        setBuyNowStyleState(buyNowContainerStyle);
+        setBuyNowButtonStyleState(buyNowButtonStyle);
     };
 
     const mobileScrrenView = () =>{
@@ -52,6 +58,8 @@ const Card = ({card} : CardTypes) => {
         setDescriptionStyleState(descriptionStyleMob);
         setTagsStyleState(tagsStyleMob);
         setTagStyleState(tagStyleMob);
+        setBuyNowStyleState(buyNowContainerStyleMob);
+         setBuyNowButtonStyleState(buyNowButtonStyleMob);
     }
 
     const tabScreenView = () =>{
@@ -62,6 +70,8 @@ const Card = ({card} : CardTypes) => {
         setDescriptionStyleState(descriptionStyleTab);
         setTagsStyleState(tagsStyleTab);
         setTagStyleState(tagStyleTab);
+        setBuyNowStyleState(buyNowContainerStyleTab);
+         setBuyNowButtonStyleState(buyNowButtonStyleTab);
     };
 
 
@@ -87,7 +97,7 @@ const Card = ({card} : CardTypes) => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [mobileScreen, tabletScreen]);
+  }, [mobileScreen, tabletScreen, desktopLargeScreen]);
   
   return (
       <div className={cardStyle.className} style={cardStyleState}>
@@ -102,6 +112,9 @@ const Card = ({card} : CardTypes) => {
           {
             tags.map((tag, i)=><span key={i} className={`${tagClassName}`} style={tagStyleState}>#{tag}</span>)
           }
+        </div>
+        <div className={buyNowClassName} style={buyNowStyleState}>
+          <button className={buyNowButtonClassName} style={buyNowButtonStyleState}>Buy now</button>
         </div>
       </div>
   )
